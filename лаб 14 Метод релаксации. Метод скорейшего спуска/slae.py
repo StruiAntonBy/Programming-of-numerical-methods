@@ -39,8 +39,26 @@ def method_rapid_descent(matrix, e, name_matrix, name_unknown):
 
     f = [row.pop() for row in matrix]
 
-    if np.linalg.det(np.array(matrix, dtype=float)) == 0:
+    det_list = [np.linalg.det(np.array(matrix, dtype=float))]
+
+    if det_list[0] == 0 :
         print("det({0}) = 0\n".format(name_matrix))
+        return
+
+    matrix_minor = lambda arr, row, column: np.delete(np.delete(arr, row, axis=0), column, axis=1)
+
+    for i in range(0, len(matrix)-1):
+        tmp = [j for j in range(i+1, len(matrix))]
+        det_list.append(np.linalg.det(matrix_minor(np.array(matrix, dtype=float), tmp, tmp)))
+
+    def check_major_minor(determinants):
+        for det in determinants:
+            if det <= 0:
+                return False
+        return True
+
+    if not check_major_minor(det_list):
+        print("One of the major minors <= 0")
         return
 
     if len(matrix) < 3:
