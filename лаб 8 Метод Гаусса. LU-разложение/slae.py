@@ -73,6 +73,10 @@ def method_lu_decomposition(matrix, accuracy_print, name_matrix):
 
     f, l, u = [row.pop() for row in matrix], np.zeros((len(matrix), len(matrix)), dtype=Decimal), np.zeros(
         (len(matrix), len(matrix)), dtype=Decimal)
+    
+    if len(matrix) != len(matrix[0]):
+        print("Matrix {0} not quadratic".format(name_matrix))
+        return
 
     if len(matrix) != len(matrix[0]):
         print("Matrix {0} not quadratic".format(name_matrix))
