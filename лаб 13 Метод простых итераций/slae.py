@@ -16,10 +16,10 @@ def __common_func(func, matrix, e, name_matrix, name_unknown):
         print("len({0}) < 3\n".format(name_matrix))
         return
 
-    if sum([abs(matrix[i][i]) > matrix[i][j] for i in range(0, len(matrix)) for j in
-            range(0, len(matrix)) if i != j]) != (len(matrix) ** 2) - len(matrix):
-        print("Matrix {0} does not have a diagonal predominance".format(name_matrix))
-        return
+    for i in range(0, len(matrix)):
+        if abs(matrix[i][i]) <= sum(abs(matrix[i][j]) for j in range(0, len(matrix)) if i != j):
+            print("Matrix {0} does not have a diagonal predominance".format(name_matrix))
+            return
 
     B, g = np.array([[-matrix[i][j] / matrix[i][i] if i != j else 0 for j in range(0, len(matrix))] for i in
                      range(0, len(matrix))]), [f[i] / matrix[i][i] for i in range(0, len(matrix))]

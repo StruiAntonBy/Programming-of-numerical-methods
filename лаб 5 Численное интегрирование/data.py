@@ -1,8 +1,8 @@
 import math
 import decimal
 
-INTERVAL = [decimal.Decimal("0.2"), decimal.Decimal("1")]
-INTEGRAND_FUNC = lambda x: x / (2 * x + 1)
+INTERVAL = [decimal.Decimal("-3"), decimal.Decimal("-2")]
+INTEGRAND_FUNC = lambda x: x / ((x + 1)**2)
 PRIMITIVE_FUNC = lambda x: (x / 2) - 0.25 * math.log(abs(2 * x + 1))
 N1 = 10  # Методы прямоугольников, трапеций
 N2 = 10  # Метод парабол

@@ -24,7 +24,8 @@ def LU_decomposition(matrix, name_matrix, accuracy_print):
 
 
 def getDet_LU_decomposition(matrix, name_matrix, accuracy_print):
-    return sum([row[i] for i, row in enumerate(LU_decomposition(matrix, name_matrix, accuracy_print)[0])])
+    l, u = LU_decomposition(matrix, name_matrix, accuracy_print)
+    return np.linalg.det(l) * np.linalg.det(u)
 
 
 def getInverseMatrix_LU_decomposition(matrix, name_matrix, accuracy_print):

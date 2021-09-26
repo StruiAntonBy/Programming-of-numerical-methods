@@ -1,14 +1,14 @@
 import numpy as np
-from math import factorial
+from math import factorial, e
 
-X0 = 1  # начало отрезка
+X0 = 5  # начало отрезка
 Xn = 10  # конец отрезка
-H = 2  # шаг
-N1 = 2
+H = 1  # шаг
+N1 = 3
 N2 = 3
-T1 = 1.24
-T2 = 5.23
-T3 = 8.94
+T1 = 6.81
+T2 = 8.27
+T3 = 9.01
 POINTS = [T1, T2, T3]
 X = np.linspace(X0, Xn, 100)  # от X0 до Xn сделать 100 точек
 
@@ -23,7 +23,7 @@ for i, elem in enumerate(X):
         _t += 1
 
 FUNC = 5 * X - 8 * np.log(X) - 8  # f(x)
-IMPL_FUNC = lambda x: 5 * x - 8 * np.log(x) - 8  # реализация f(x)
+IMPL_FUNC = lambda x: 0.25 * ((e **(0.5*x))-x)  # реализация f(x)
 
 
 def der_function(n, x0):

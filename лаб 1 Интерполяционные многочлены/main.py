@@ -32,7 +32,7 @@ with open('output-data.txt', 'w') as f:
         print('Error H>0', file=f)
         exit()
 
-    xi = [x for x in range(dat.X0, dat.Xn, dat.H)]
+    xi = [x for x in range(dat.X0, dat.Xn + dat.H, dat.H)]
     i = [x for x in range(0, len(xi))]
     yi = [dat.IMPL_FUNC(x) for x in xi]
     pg.print_table(i=i, xi=xi, yi=yi, file=f)
